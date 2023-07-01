@@ -2,12 +2,12 @@
     <div class="main-cont">
       <div v-for="channel in channels" :key="channel.name">
         <div class="channel-cont">
-          <div>
+          <div class="chan-img">
             <img :src="channel.profile_picture" alt="Profile Picture">
           </div>
           <div>
-            <h2>{{ channel.name }}</h2>
-            <p>{{ channel.description }}</p>
+            <h1>{{ channel.name }}</h1>
+            <label>{{ channel.description }}</label>
           </div>
         </div>
         <div class="navbar-cont">
@@ -30,10 +30,12 @@
                     <li v-for="video in channel.videos" :key="video">
                         <div>
                             <div class="content">
-                                <img :src="video.thumbnail" alt="">
+                                <div class="content-img"> 
+                                    <img :src="video.thumbnail" alt="">
+                                </div>
                                 <div class="content-column">
-                                    <h3>{{ video.title }}</h3>
-                                    <p>{{ video.description }}</p>
+                                    <h5>{{ video.title }}</h5>
+                                    <label>{{ video.description }}</label>
                                 </div>
                             </div>
                         </div>
@@ -105,38 +107,36 @@
   </script>
   
   <style>
+  *{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
   .main-cont {
     height: 100vh;
   }
   ul{
+    padding: 0;
     list-style: none;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-between;
+    
   }
-  
+  label{
+    display: inline-flex;
+  }
+  .content-img img{
+    border-radius: 12px;
+    width: 10vw;
+  }
   .channel-cont {
     display: flex;
     flex-direction: row;
-    background-color: white;
+    height: 20vh;
     align-items: center;
   }
-  
-  .content {
-    display: flex;
-    flex-direction: row;
-    width: 45vw;
-  }
-
-  .content-column{
-    margin-left: 2%;
-  }
-  
   .navbar-cont {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     background-color: #c33030;
-    padding: 10px;
+    padding: 1vh;
     position: relative;
   }
   
@@ -155,17 +155,18 @@
   .active {
     color: white;
   }
-  
   .slider {
     height: 2px;
     background-color: white;
     position: absolute;
     bottom: 0;
     transition: left 0.3s ease;
-    width: calc(100% / 5); /* Adjust the width based on the number of tabs */
+    width: calc(100% / 5);
   }
   .video-cont{
-    display: flex;
-    flex-wrap: wrap;
+    background-color: aliceblue;
+  }
+  .content{
+    width: 10vw;
   }
   </style>
